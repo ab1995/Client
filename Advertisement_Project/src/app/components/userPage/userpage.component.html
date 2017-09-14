@@ -1,0 +1,36 @@
+<div class="container-fluid ">
+    <div class="row content" style="margin-top:2%;">
+
+        <div class="col-sm-2 sidenav" id="leftSide" style="margin-top:3%;">
+            <ul class="nav nav-pills nav-stacked" id="sideMenu">
+                
+                <li><a  (click)="chooseCategory()">All</a></li>
+                <li *ngFor="let item of categories;"><a  (click)="chooseCategory(item)" >{{item}}</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-8 text-left" id="mainBody">
+
+            <list-ads></list-ads>
+            <div style="text-align:center;">
+                <div class="pagination">
+                    <a href="#">&laquo;</a>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <a href="#">4</a>
+                    <a href="#">5</a>
+                    <a href="#">6</a>
+                    <a href="#">&raquo;</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-sm-2 sidenav" style="background-color:white; margin-top:3%;">
+
+        </div>
+
+
+    </div>
+</div>

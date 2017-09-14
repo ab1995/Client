@@ -1,0 +1,103 @@
+<div class="row menu">
+
+    <div class="col-sm-12 col-xs-12">
+        <div class="row" style="background-color:#F5F5F5; margin-left:0px;">
+            <div class="col-sm-12 col-xs-12" style="margin-bottom:-5px; margin-top:-5px;">
+                <div *ngIf="temp" style="float:right;">
+                      <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" style="margin:10px; vertical-align: middle;" type="button" data-toggle="dropdown">My Profile<span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                        <li><a (click)="getUserData()" data-toggle="modal" data-target="#userModal">My Profile</a></li>
+                        <li><a (click)="logOutUser()">Log Out</a></li>
+                        <li><a (click)="listUserAds()" >View MyPosts</a></li>
+                        </ul>
+                        <button style="margin:10px; vertical-align: middle;" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal_2"><span class="glyphicon glyphicon-share"></span> Post Ad</button>
+
+                    </div>
+                </div>
+                <div *ngIf="!temp">    
+                    <button style="margin:10px; vertical-align: middle;" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-user"></span> My Account</button>
+                </div>    
+                    <login></login>
+                    <postad></postad>
+                <label id="logoLabel">Classified.Com</label>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-default" style="background-color:#2E779A; margin-left:0px;">
+            <div class="row" style="margin-top:5px; margin-left:0px;">
+                <div class="col-sm-4">
+                    <input class="form-control" #searchText name="x" placeholder="Search Product...." type="text" style="width:350px;">
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="container body-content">
+                        <select #searchCategory class="selectpicker" style="width:200px; height:35px; padding-left:12px;">
+                            <option *ngFor="let item of categories; let i=index" >{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="container body-content">
+                        <select class="selectpicker" style="width:200px; height:40px">
+									<optgroup>	
+										<option>Location - All</option>
+									</optgroup>	
+									<optgroup label="Maharashtra" style=" font-size: 15px;">
+										<option>Pune</option>
+											<option>Mumbai</option>
+											<option>Ahmednagar</option>
+											<option>Nagpur</option>
+											<option>Nashik</option>
+											<option>Thane</option>
+									</optgroup >
+									<optgroup label="Gujarat" style=" font-size: 15px;">
+										<option>Ahmedabad</option>
+										<option>Surat</option>
+										<option>Gandhinagar</option>
+									</optgroup>												
+						</select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <span class="input-group-btn">
+						<button  class="btn btn-search" (click)="onSearch(searchText.value, searchCategory.value)" style="background-color:#286090; color:white;" value="fsdfsdf"><i class="fa fa-search fa-fw" ></i> Search</button>
+					</span>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="userModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="height:300px;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h2 class="modal-title">User Info</h2>
+        </div>
+        <div class="modal-body">
+            <div>
+                <div class="col-sm-3"><label class="labelKey">First Name</label></div>
+                <div class="col-sm-9"><label class="labelValue">{{userFirstName}}</label></div>
+            </div>
+            <div>
+                <div class="col-sm-3"><label class="labelKey">Last Name</label></div>
+                <div class="col-sm-9"><label class="labelValue">{{userLastName}}</label></div>
+            </div>
+            <div>
+                <div class="col-sm-3"><label class="labelKey">Userame</label></div>
+                <div class="col-sm-9"><label class="labelValue">{{userUserName}}</label></div>
+            </div>
+        </div> 
+        </div>
+        <div class="modal-footer">
+           
+        </div>
+      </div>
+      
+</div>

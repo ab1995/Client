@@ -1,0 +1,25 @@
+<div class="container-fluid ">
+    <myheader (searchEvent)="searchAds($event)" (listUserAdEvent)="listAllUserAds($event)"></myheader>
+    <div class="row content" style="margin-top:2%;">
+
+        <div class="col-sm-2 sidenav" id="leftSide" style="margin-top:3%;">
+            <ul class="nav nav-pills nav-stacked" id="sideMenu">
+                
+                <li><a  (click)="chooseCategory()">All</a></li>
+                <li *ngFor="let item of categories;"><a  (click)="chooseCategory(item)" >{{item}}</a></li>
+            </ul>
+        </div>
+
+        <div class="col-sm-8 text-left" id="mainBody">
+
+            <list-ads (dummyEvent)="dummyFunc($event)"></list-ads>
+
+        </div>
+
+        <div class="col-sm-2 sidenav" style="background-color:white; margin-top:3%;">
+
+        </div>
+
+
+    </div>
+</div>

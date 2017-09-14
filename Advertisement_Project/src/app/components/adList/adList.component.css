@@ -1,0 +1,24 @@
+
+.productTitle {
+	font-size:20px;
+	color:#00c0d2;
+}
+
+.productTitle a:hover{
+    font-size:20px;
+    color:blue;
+}
+
+.productDescription{
+	text-align:justify;
+}
+
+.productDetail p{
+	font-size:20px;
+	color:#d83a53;
+}
+
+.productDetail div{
+	font-size:15px;
+	color:#48384d;
+}

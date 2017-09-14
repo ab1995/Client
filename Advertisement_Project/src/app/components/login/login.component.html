@@ -1,0 +1,139 @@
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#F5F5F5">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Login/Registration</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form #loginForm="ngForm"  class="form-horizontal">
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">Username</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" placeholder="Username" name="loginUserName" #userNameRef="ngModel" required ngModel />
+                                            <div *ngIf="userNameRef.errors && userNameRef.touched" class="alert alert-danger">
+                                                <small [hidden]="!userNameRef.errors.required" >Please enter your Username </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" name="loginPassword" #inputPassword="ngModel"  placeholder="********" required ngModel/>
+                                            <div *ngIf="inputPassword.errors && inputPassword.touched" class="alert alert-danger">
+                                                <div [hidden]="!inputPassword.errors.required" >Please enter Password </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-10">
+                                            <button type="submit" (click)="onLoginSubmit(loginForm.value)" data-dismiss="modal" class="btn btn-primary btn-sm" [disabled]="!loginForm.form.valid" >Submit</button>
+                                            <a href="javascript:;">Forgot your password?</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                                <form #registerForm="ngForm"  class="form-horizontal" novalidate>
+                                    <div class="form-group">
+                                        <label for="name" class="col-sm-2 control-label">Name</label>
+                                        <div class="col-sm-5">
+                                            <input type="text" style="width:150px;" class="form-control" #registerFirstName="ngModel" name="registerFirstName" placeholder="First Name" required ngModel />
+                                            <div *ngIf="registerFirstName.errors && registerFirstName.touched" class="alert alert-danger">
+                                                <div [hidden]="!registerFirstName.errors.required" >Please enter First Name </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <input type="text" style="width:150px;" class="form-control" #registerLastName="ngModel" name="registerLastName" placeholder="Last Name" required ngModel/>
+                                            <div *ngIf="registerLastName.errors && registerLastName.touched" class="alert alert-danger">
+                                                <div [hidden]="!registerLastName.errors.required" >Please enter Last Name </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="userName" class="col-sm-2 control-label">Username</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" style="width:300px;" class="form-control" #registerUserName="ngModel" name="registerUserName" placeholder="Username" required minlength="2" ngModel/>
+                                            <div *ngIf="registerUserName.errors && registerUserName.touched" class="alert alert-danger">
+                                                <div [hidden]="!registerUserName.errors.required" >Please enter Username </div>
+                                                <div [hidden]="!registerUserName.errors.minlength" >Username length should be minimum 2 characters </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="col-sm-2 control-label">Email</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"  style="width:300px;" class="form-control" #registerEmail="ngModel" name="registerEmail" placeholder="Email" required ngModel />
+                                            <div class="md-errors-spacer" [hidden]="registerEmail.valid || registerEmail.untouched">
+                                                <div  *ngIf="registerEmail.errors && registerEmail.errors.required" class="alert alert-danger">
+                                                    Email is required
+                                                </div>
+                                                <div  *ngIf="registerEmail.errors && registerEmail.errors.pattern" class="alert alert-danger">
+                                                    Email is invalid
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="mobile" class="col-sm-2 control-label">Mobile</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" #registerMobileNumber="ngModel" name="registerMobileNumber" placeholder="Mobile" required minlength="10" maxlength="10" ngModel/>
+                                            <div *ngIf="registerMobileNumber.errors && registerMobileNumber.touched" class="alert alert-danger">
+                                                <div [hidden]="!registerMobileNumber.errors.required" >Please enter Mobile Number </div>
+                                                <div [hidden]="!registerMobileNumber.errors.minlength" >Mobile Number should be 10 digits</div>
+                                                <div [hidden]="!registerMobileNumber.errors.maxlength" >Mobile Number should be 10 digits</div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="col-sm-2 control-label">Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" class="form-control" #registerPassword="ngModel" name="registerPassword"  placeholder="Password" required ngModel/>
+                                            <div *ngIf="registerPassword.errors && registerPassword.touched" class="alert alert-danger">
+                                                <div [hidden]="!registerPassword.errors.required" >Please enter Password </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-2"></div>
+                                        <div class="col-sm-10">
+                                            <button type="button" (click)="onRegisterSubmit(registerForm.value)" data-dismiss="modal" class="btn btn-primary btn-sm" [disabled]="!registerForm.form.valid">Sign Up</button>
+                                            <button type="button" id="cancelButton" class="btn btn-default btn-sm" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="OR" class="hidden-xs">OR</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row text-center sign-with">
+                            <div class="col-md-12">
+                                <h3>Sign in with</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">Google</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

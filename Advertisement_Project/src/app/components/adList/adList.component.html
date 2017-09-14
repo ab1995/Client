@@ -1,0 +1,51 @@
+<div *ngFor="let item of adArray;">
+    <div class="row" style="background-color:#F5F5F5; margin-top:20px;">
+        <div class="col-sm-4">
+            <div class="productTitle">
+                <a href="#" >{{item.title}}</a>
+            </div>
+        </div>
+        <div class="col-sm-5" style="padding:10px;">
+
+            <div class="productDescription">
+                {{item.description}}
+            </div>
+			<div class="productDetail" style="margin-top:5px;">
+				<div><span class="glyphicon glyphicon-user"></span> {{item.userId}}</div>
+			</div>
+        </div>
+        <div class="col-sm-3" style="margin-top:15px;">
+            <div *ngIf="!displayUserAdFlag">
+                <button class="btn btn-primary" (click)="selectPostUser(item.userId, item.name, item.id)" data-toggle="modal" data-target="#productModal">Contact</button>
+            </div>
+            <div *ngIf="displayUserAdFlag">
+                <div *ngFor="let act of actions;">
+                    <a (click)="performAction(act.name, item.id)">{{act.name}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="productModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message {{userID}}</h4>
+        </div>
+        <div class="modal-body">
+            <input type="text" style="width:90%;" placeholder="Type Message..." name="messageToSend" #messageToSend="ngModel" required ngModel />
+            <div *ngIf="messageToSend.errors && messageToSend.touched" class="alert alert-danger">
+            <small [hidden]="!messageToSend.errors.required" >Please enter your Message </small>
+        </div> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" (click)="sendMessage(messageToSend.value)" class="btn btn-default" data-dismiss="modal">Send</button>
+        </div>
+      </div>
+      
+    </div>
+</div>

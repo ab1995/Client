@@ -1,0 +1,111 @@
+<div class="modal fade" id="myModal_2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#F5F5F5">
+                <button type="button" id="cancelPostButton" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myModalLabel">Upload Free Ad</h4>
+			</div>
+					
+            <div class="modal-body ">
+			    <div class="container col-centered " >
+					<form class="form-horizontal " #postAdForm="ngForm">
+                        <div class="form-group ">
+								<label for="Name " class="col-sm-3 control-label ">Name</label>
+								<div class="col-sm-9 ">
+									<input type="text " #postAdName="ngModel" name="postAdName" class="form-control " required ngModel>
+                                    <div *ngIf="postAdName.errors && postAdName.touched" class="alert alert-danger">
+                                        <div [hidden]="!postAdName.errors.required" >Please enter Name </div>
+                                    </div>
+                                </div>
+						</div>							
+						<div class="form-group ">
+							<label for="title " class="col-sm-3 control-label ">Ad Title</label>
+							<div class="col-sm-9 ">
+								<input type="text " #postAdTitle="ngModel" name="postAdTitle" placeholder="Samsung S8... " class="form-control " required ngModel>
+                                <div *ngIf="postAdTitle.errors && postAdTitle.touched" class="alert alert-danger">
+                                    <div [hidden]="!postAdTitle.errors.required" >Please enter Title </div>
+                                </div>
+                            </div>
+						</div>
+						<div class="form-group ">
+							<label for="country " class="col-sm-3 control-label ">Category</label>
+							<div class="col-sm-9 ">
+                                <select  class="selectpicker" #postAdCategory="ngModel" name="postAdCategory" style="width:200px; height:35px; padding-left:12px;" ngModel required>
+                                    <option></option>
+                                    <option *ngFor="let item of categories; let i=index" >{{item}}</option>
+                                </select>
+                                <div *ngIf="postAdCategory.errors && postAdCategory.touched" class="alert alert-danger">
+                                    <div [hidden]="!postAdCategory.errors.required" >Please select Category </div>
+                                </div>
+							</div>
+						</div> <!-- /.form-group -->
+
+						<div class="form-group ">
+							<label for="description " class="col-sm-3 control-label ">Description</label>
+							<div class="col-sm-9 ">
+								<textarea  #postAdDescription="ngModel" name="postAdDescription" placeholder="Include Product details... " class="form-control " rows=5 required ngModel> </textarea>
+                                <div *ngIf="postAdDescription.errors && postAdDescription.touched" class="alert alert-danger">
+                                    <div [hidden]="!postAdDescription.errors.required" >Please enter Product Description </div>
+                                </div>
+                            </div>
+							
+						</div>
+
+
+						<div class="form-group ">
+							<label for="email " class="col-sm-3 control-label ">Email</label>
+							<div class="col-sm-9 ">
+								<input type="text" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #postAdEmail="ngModel" name="postAdEmail" placeholder="emailID " class="form-control " required ngModel>
+								<div class="md-errors-spacer" [hidden]="postAdEmail.valid || postAdEmail.untouched">
+                                    <div  *ngIf="postAdEmail.errors && postAdEmail.errors.required" class="alert alert-danger">
+                                        Email is required
+                                    </div>
+                                    <div  *ngIf="postAdEmail.errors && postAdEmail.errors.pattern" class="alert alert-danger">
+                                        Email is invalid
+                                    </div>
+                                </div>								
+                            </div>
+						</div>
+
+						<!--div class="form-group ">
+							<label for="country " class="col-sm-3 control-label ">Location</label>
+							<div class="col-sm-9 ">
+								<select  class="form-control " name="postAdLocation" #postAdLocation="ngModel" ngModel required>
+									<optgroup label="Maharashtra " >
+    									<option>Pune</option>
+										<option>Mumbai</option>
+										<option>Ahmednagar</option>
+										<option>Nagpur</option>
+										<option>Nashik</option>
+										<option>Thane</option>
+									</optgroup >
+									<optgroup label="Gujarat " >
+										<option>Ahmedabad</option>
+										<option>Surat</option>
+										<option>Gandhinagar</option>
+							        </optgroup>												
+								</select>
+                                <div *ngIf="postAdLocation.errors && postAdLocation.touched" class="alert alert-danger">
+                                    <div [hidden]="!postAdLocation.errors.required" >Please select Location</div>
+                                </div>
+							</div>
+						</div--> <!-- /.form-group -->
+
+						<div class="form-group ">
+							<div class="col-sm-9 col-sm-offset-3 ">
+								<label>By clicking you accept and agree to all <a href="# ">terms and condition</a>
+								</label>
+							</div>
+						</div> <!-- /.form-group -->
+
+						<div class="form-group ">
+							<div class="col-sm-9 col-sm-offset-3 ">
+								<button type="button " (click)="onAdSubmit(postAdForm.value)" data-dismiss="modal" class="btn btn-primary btn-block " [disabled]="!postAdForm.form.valid">Post Ad</button>
+							</div>
+						</div>
+					</form> <!-- /form -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

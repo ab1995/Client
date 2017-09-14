@@ -1,0 +1,74 @@
+/*=================================SignIN/SignUP===================================*/
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+}
+.input-group .form-control:not(:first-child):not(:last-child), .input-group-addon:not(:first-child):not(:last-child), .input-group-btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+.buscador-principal .form-control {
+    height: 40px;
+}
+.form-group input{ 
+	width:300px;
+}
+
+.form-group select{
+    width:300px;
+}
+
+.form-group textarea{
+    width: 300px;
+}
+.form-group button{ 
+	width:500px;
+}
+
+#country{ 
+	width:500px;
+}
+
+#email{ 
+	width:500px;
+}
+
+@media only screen and (max-width: 768px) {
+    .buscador-principal {
+		display: block;
+	}
+	.buscador-principal button{
+		width: 100%;
+	}
+	.claim-container {
+		font-size: 20px;
+		display: none;
+	}
+}
+
